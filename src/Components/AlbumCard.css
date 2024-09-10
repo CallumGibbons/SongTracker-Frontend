@@ -1,0 +1,20 @@
+.album-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 10px;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.album-name {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.album-favourite,
+.album-listens {
+    margin: 5px 0;
+    font-size: 1em;
+}

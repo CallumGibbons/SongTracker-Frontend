@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import AlbumCard from '../src/Components/AlbumCard';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    // Example album ID
+    const exampleAlbumId = 84;
+
+    return (
+        <div>
+            <h1>Album Details</h1>
+            <AlbumCard albumId={exampleAlbumId} />
+        </div>
+    );
+};
 
 export default App;
