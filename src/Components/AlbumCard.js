@@ -1,39 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import "./AlbumCard.css";
 
-const AlbumCard = ({ albumId }) => {
-  const [album, setAlbum] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchAlbum = async () => {
-      try {
-        const response = await fetch(`http://localhost:8080/albums/${albumId}`); // Use albumId in the URL
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
-        setAlbum(data);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchAlbum();
-  }, [albumId]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error fetching album data: {error.message}</div>;
-  }
-
+const AlbumCard = ({ album }) => {
   if (!album) {
     return <div>No album data available</div>;
   }
@@ -45,12 +14,13 @@ const AlbumCard = ({ albumId }) => {
         Favourite: {album.is_favourite ? "Yes" : "No"}
       </p>
       <p className="album-listens">Listens: {album.listens}</p>
+      <p className="artist-name">Artist: {album.artist.name}</p>
     </div>
   );
 };
 
 AlbumCard.propTypes = {
-  albumId: PropTypes.number.isRequired,
+  album: PropTypes.object.isRequired,
 };
 
 export default AlbumCard;
